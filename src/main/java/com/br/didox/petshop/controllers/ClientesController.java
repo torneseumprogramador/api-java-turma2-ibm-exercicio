@@ -31,13 +31,13 @@ public class ClientesController {
     }
 
     @GetMapping("/clientes/{id}")
-    public ResponseEntity<Cliente> create(@PathVariable int id){
+    public ResponseEntity<Cliente> show(@PathVariable int id){
         var cliente = clienteRepo.findById(id);
         return ResponseEntity.status(200).body(cliente.get());
     }
 
     @PutMapping("/clientes/{id}")
-    public ResponseEntity<Cliente> pu(@PathVariable int id, @RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> update(@PathVariable int id, @RequestBody Cliente cliente){
         var clienteDb = clienteRepo.findById(id);
         if(clienteDb.isEmpty()) return ResponseEntity.status(404).build();
         var clienteInstance = clienteDb.get();
