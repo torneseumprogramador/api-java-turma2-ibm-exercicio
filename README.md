@@ -35,3 +35,11 @@ mysql>exit;
 ```shell
 ./start.sh
 ````
+
+- Testes na API
+```shell
+./curl/get-home.sh # mostra a doc básica da home API
+./curl/get-clientes.sh # retorna os clientes da base de dados
+./curl/get-clientes_id.sh # retorna um cliente base de dados
+./curl/post-clientes.sh # cadastra um cliente
+````
