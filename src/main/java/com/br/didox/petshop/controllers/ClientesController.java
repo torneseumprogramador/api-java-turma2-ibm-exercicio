@@ -1,0 +1,37 @@
+package com.br.didox.petshop.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.br.didox.petshop.models.Cliente;
+import com.br.didox.petshop.repositorio.IClienteRepositorio;
+
+@RestController
+public class ClientesController {
+
+    @Autowired
+    private IClienteRepositorio clienteRepo;
+
+    @GetMapping("/clientes")
+    public Iterable<Cliente> index(){
+        return clienteRepo.findAll();
+    }
+
+    @PostMapping("/clientes")
+    public ResponseEntity<Cliente> create(@RequestBody Cliente cliente){
+        clienteRepo.save(cliente);
+        return ResponseEntity.status(201).body(cliente);
+    }
+
+    @GetMapping("/clientes/{id}")
+    public ResponseEntity<Cliente> create(@PathVariable int id){
+        var cliente = clienteRepo.findById(id);
+        return ResponseEntity.status(200).body(cliente.get());
+    }
+
+}

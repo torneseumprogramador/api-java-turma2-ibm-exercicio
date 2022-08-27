@@ -1,0 +1,20 @@
+package com.br.didox.petshop.dtos;
+
+import java.util.List;
+
+public class EndpointDao {
+    public EndpointDao(String nome, List<EndpointHTTP> endpointHTTP){
+        this.nome = nome;
+        this.endpointHTTP = endpointHTTP;
+    }
+
+    private String nome;
+    public String getNome() {
+        return nome;
+    }
+
+    private List<EndpointHTTP> endpointHTTP;
+    public List<EndpointHTTP> getEndpointHTTP() {
+        return endpointHTTP;
+    }
+}
